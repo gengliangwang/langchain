@@ -35,11 +35,11 @@ class DatabricksSQLWarehouse(SQLDatabase):
         if _databricks_token is None:
             raise ValueError(
                 "Did not find databricks_token, please add an environment variable `DATABRICKS_TOKEN`" +
-                " which contains it, or pass  `databricks_token` as a named parameter."
+                " which contains it, or pass `databricks_token` as a named parameter."
             )
 
         database_uri = (
             f"databricks://token:{_databricks_token}@{hostname}?"
             + f"http_path={http_path}&catalog={catalog}&schema={schema}"
         )
-        return super().from_uri(database_uri=database_uri, kwargs=kwargs)
+        return super().from_uri(database_uri=database_uri, engine_args=None, **kwargs)
