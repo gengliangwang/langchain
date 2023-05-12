@@ -24,7 +24,8 @@ class DatabricksSQLWarehouse(SQLDatabase):
             from databricks import sql
         except ImportError:
             raise ValueError(
-                "databricks-sql-connector package not found, please install with `pip install databricks-sql-connector`"
+                "databricks-sql-connector package not found, please install with"
+                " `pip install databricks-sql-connector`"
             )
 
         _databricks_token = (
@@ -34,8 +35,9 @@ class DatabricksSQLWarehouse(SQLDatabase):
         )
         if _databricks_token is None:
             raise ValueError(
-                "Did not find databricks_token, please add an environment variable `DATABRICKS_TOKEN`" +
-                " which contains it, or pass `databricks_token` as a named parameter."
+                "Did not find databricks_token,"
+                "please add an environment variable `DATABRICKS_TOKEN` "
+                "which contains it, or pass `databricks_token` as a named parameter."
             )
 
         database_uri = (
